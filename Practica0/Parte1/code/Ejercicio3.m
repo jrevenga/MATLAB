@@ -15,6 +15,10 @@ disp('Transpuesta de A:');
 disp(A');
 disp('Transpuesta de B:');
 disp(B');
+disp('Inversa de A:');
+disp(inv(A);
+disp('Inversa de B:');
+disp(inv(B);
 
 if isequal(size(A), size(B)) && size(A,1) == size(A,2)
     disp('Determinante de A: ');
