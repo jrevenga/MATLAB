@@ -1,4 +1,4 @@
-% 1.1 Representar gráficamente 𝑓(𝑘) = 2 + 5𝑘 + 𝑘^2 y su transformada
+% 1.1 Representar gráficamente f(k) = 2 + 5k + k^2 y su transformada
 
 syms k z; % Define las variables simbólicas k y z
 f_k = 2 + 5*k + k.^2; 
