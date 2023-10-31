@@ -14,7 +14,6 @@ sim('PositionControl.slx')
 %grid on;
 %hold on;
 
-
 % Generar N posiciones aleatorias, simular y guardar en variables
 N=30;
 E_d_vec=[];
