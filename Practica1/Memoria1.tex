@@ -483,7 +483,7 @@
 	\part{Diseño de un control de posición mediante una red neuronal no recursiva.}
 	
 	\section{Desarrollo}
-	
+	Después de incluir todos los bloques principales y el controlador proporcionado en “controlblackbox.slx” la figura queda de la siguiente manera:
 	\subsection{Esquema de Simulink}
 		\begin{figure}[htp!]
 			\centering
@@ -525,6 +525,18 @@
 			\includegraphics[width=0.4\textwidth]{figures/parte2/ejerF.png}
 			\caption{Resultados del entrenamiento.}
 		\end{figure}
+		\begin{figure}[htp!]
+			\begin{subfigure}{0.5\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{figures/parte2/ejerF1.jpg}
+			\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{figures/parte2/ejerF.jpg}
+			\end{subfigure}
+			\caption{Comportamiento de la red en los subconjuntos de entrenamiento, test y validación.}
+		\end{figure}
+		Podemos observar que los resultados del entrenamiento son correctos.
+		
 	\newpage
 	\subsection{Generación de bloque de Simulink con el controlador neuronal.}
 		\inputminted[fontsize=\scriptsize, linenos, breaklines=true, xleftmargin=0.75cm, frame=lines]{matlab}{code/parte2/EjerG.m}
