@@ -1,4 +1,4 @@
-N=1;
+N=2;
 Ts=100e-3;
 E_d_vec=[];
 E_theta_vec=[];
