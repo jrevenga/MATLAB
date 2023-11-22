@@ -1,0 +1,111 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[hmargin=2cm,vmargin=2.5cm]{geometry}
+\usepackage{enumerate}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[backend=biber,style=apa, url=true, sortcites]{biblatex}
+\usepackage[table]{xcolor}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{fancyhdr}  % Agrega el paquete fancyhdr
+\usepackage{subcaption}
+
+\addbibresource{references.bib}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\setlength{\arrayrulewidth}{0.4mm}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            % logo
+            \includegraphics[width=0.5\textwidth]{figures/logoUAH.png}~\\[2cm]
+            
+            \textsc{\Large \\Sistemas de Control Inteligente}\\[2cm]
+            
+            \HRule \\[0.4cm]
+            {\LARGE \bfseries Práctica 2. \\ Control Borroso  \\[0.4cm]}
+            \HRule \\[3cm]
+            
+            \large\textbf{Jorge Revenga Martín de Vidales}\\
+            \large\textbf{Ángel Salgado Aldao}\\
+            \large\textbf{}\\ Grado en Ingeniería Informática \\ Universidad de Alcalá
+            
+            \vfill
+            
+            {\large \today}
+        \end{center}
+    \end{titlepage}
+
+    % Configura los encabezados y pies de página
+    \pagestyle{fancy}
+    \fancyhf{} % Limpia todos los encabezados y pies de página actuales
+    % Encabezado
+    \fancyhead[RO,LE]{\textit{Sistemas de Control Inteligente}}
+    \fancyhead[LO,RE]{\textit{Control Borroso}}  % Encabezado izquierda del documento
+    % Pie de página
+    \fancyfoot[LO,RE]{\textit{Universidad de Alcalá}}
+    \fancyfoot[RO,LE]{\thepage}  % Número de página en la esquina inferior derecha
+    \newpage
+    
+    \thispagestyle{plain}
+    \tableofcontents
+    \newpage
+
+    \part{Diseño de un control borroso de posición para un robot móvil.}
+    
+    \section{a)}
+	
+	\begin{figure}[htp!]
+		\centering
+		\includegraphics[width=0.25\textwidth]{figures/parte1/}
+	\end{figure}
+	
+	
+	\subsection{Código}
+	\inputminted[fontsize=\scriptsize, linenos, breaklines=true, xleftmargin=0.75cm, frame=lines]{matlab}{code/parte1/}
+    
+    \subsection{i}
+    
+    \subsection{ii}
+    
+    \subsection{iii}
+    
+    \subsection{iv}
+    
+    \subsection{v}
+    
+    \section{b)}
+    
+    \section{c)}
+    
+    \section{d)}
+
+                
+	\part{Diseño de control borroso de posición con evitación de obstáculos.}
+	
+	
+	\section{a)}
+	
+	\section{b)}
+	
+	\section{c)}
+	
+	\section{d)}
+	
+	\section{e)}
+	
+	
+	
+ \end{document}
