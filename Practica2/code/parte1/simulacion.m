@@ -6,8 +6,8 @@ numSimulations = 5; % Puedes ajustar este valor según sea necesario
 
 for i = 1:numSimulations
     % Referencia x-y de posición aleatoria
-    refx = 20 * rand - 5;
-    refy = 20 * rand - 5;
+    refx = 15 * rand - 5;
+    refy = 15 * rand - 5;
 
     % Ejecutar simulación
     sim('PositionControl.slx');
