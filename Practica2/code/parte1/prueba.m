@@ -2,7 +2,7 @@
 Ts=100e-3;
 % Referencia x-y de posicion
 x_0 = 0.1;
-y_0 = 0.1;
+y_0 = 0.2;
 th_0 = 0;
 
 % Ejecutar Simulacion
