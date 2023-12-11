@@ -3,7 +3,7 @@ Ts=100e-3;
 % Referencia x-y de posicion
 x_0 = 0.1;
 y_0 = 0.1;
-th_0 = 0;
+th_0 = -1;
 
 % Ejecutar Simulacion
 sim('PositionControl2.slx')
