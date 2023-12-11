@@ -3,10 +3,10 @@ Ts=100e-3;
 % Referencia x-y de posicion
 x_0 = 0.1;
 y_0 = 0.1;
-th_0 = (3*pi)/180;
+th_0 = 0;
 
 % Ejecutar Simulacion
-sim('PositionControl.slx')
+sim('PositionControl2.slx')
 
 % Mostrar
 x=salida_x.signals.values;
