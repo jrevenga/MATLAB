@@ -6,7 +6,7 @@ y_0 = 0.2;
 th_0 = 0;
 
 % Ejecutar Simulacion
-sim('PositionControl2.slx')
+sim('PositionControl.slx')
 
 % Mostrar
 x=salida_x.signals.values;
