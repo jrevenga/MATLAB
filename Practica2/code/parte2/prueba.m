@@ -3,7 +3,7 @@ Ts = 100e-3;
 
 % Referencia x-y de posicion
 x_0 = 0.3;
-y_0 = -2;
+y_0 = 0;
 th_0 = 0;
 
 % Referencia x-y de objeto
