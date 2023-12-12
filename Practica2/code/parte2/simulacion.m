@@ -2,8 +2,8 @@
 Ts = 100e-3;
 
 % Referencia x-y de posición aleatoria
-refx = -5;
-refy = 0;
+refx = 5;
+refy = 5;
 
 obsx= 2.5; 
 obsy= 2.5;
