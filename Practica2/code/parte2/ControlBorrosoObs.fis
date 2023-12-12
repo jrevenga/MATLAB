@@ -58,9 +58,9 @@ MF3='GRANDE':'trimf',[0.3594 0.553 0.553]
 Name='W'
 Range=[-1 1]
 NumMFs=3
-MF1='NEG':'trimf',[-1 -1 0]
+MF1='NEG':'trimf',[-1 -1 -0.1]
 MF2='CERO':'trimf',[-0.35 0 0.35]
-MF3='POS':'trimf',[0 1 1]
+MF3='POS':'trimf',[0.1 1 1]
 
 [Rules]
 3 1 0 0, 1 1 (1) : 1
