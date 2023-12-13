@@ -1,5 +1,5 @@
 [System]
-Name='ControlBorroso'
+Name='ControlBorroso3'
 Type='mamdani'
 Version=2.0
 NumInputs=2
@@ -31,11 +31,11 @@ MF5='POS_G':'trimf',[0.5 3.142 3.142]
 
 [Output1]
 Name='V'
-Range=[0 2]
+Range=[0 0.517]
 NumMFs=3
-MF1='PEQUEÑA':'trimf',[0 0 0.6994]
-MF2='MEDIA':'trimf',[0.3 1 1.7]
-MF3='GRANDE':'trimf',[1.301 2 2]
+MF1='PEQUEÑA':'trimf',[0 0 0.1808]
+MF2='MEDIA':'trimf',[0.07755 0.2585 0.4395]
+MF3='GRANDE':'trimf',[0.3362 0.517 0.517]
 
 [Output2]
 Name='W'

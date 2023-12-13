@@ -6,16 +6,14 @@ y_0 = 0.2;
 th_0 = 0;
 
 % Ejecutar Simulacion
-sim('PositionControl.slx')
+sim('PositionControl2.slx')
 
 % Mostrar
 x=salida_x.signals.values;
 y=salida_y.signals.values;
-x2=entrada_x.signals.values;
-y2=entrada_y.signals.values;
 
 figure;
-plot(x,y,x2,y2);
-legend('Borroso','Generado')
+plot(x,y);
+legend('Trayectoria')
 grid on;
 hold on;
