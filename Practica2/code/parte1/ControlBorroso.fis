@@ -31,11 +31,11 @@ MF5='POS_G':'trimf',[0.5 3.142 3.142]
 
 [Output1]
 Name='V'
-Range=[0 0.517]
+Range=[0 2.14]
 NumMFs=3
-MF1='PEQUEÑA':'trimf',[0 0 0.1808]
-MF2='MEDIA':'trimf',[0.07755 0.2585 0.4395]
-MF3='GRANDE':'trimf',[0.3362 0.517 0.517]
+MF1='PEQUEÑA':'trimf',[0 0 0.7484]
+MF2='MEDIA':'trimf',[0.3209 1.069 1.817]
+MF3='GRANDE':'trimf',[1.392 2.14 2.14]
 
 [Output2]
 Name='W'
