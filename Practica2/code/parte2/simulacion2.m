@@ -1,19 +1,21 @@
 % Tiempo de muestreo
 Ts = 100e-3;
 
-% Referencia x-y de posición aleatoria
-refx = 5;
-refy = 5;
+% Referencia x-y de posicion
+x_0 = 0.3;
+y_0 = 0;
+th_0 = 0;
 
-obsx= 2.7;
-obsy= 2.4;
+% Referencia x-y de objeto
+obsx= 1.5;
+obsy= 1.956;
 
 % Ejecutar simulación
-sim('EvitarObstaculo.slx');
+sim('EvitarObstaculo_Trajectory.slx');
 
 % Obtener datos de salida
-x = salida_x.signals.values;
-y = salida_y.signals.values;
+x=salida_x.signals.values;
+y=salida_y.signals.values;
     
 % Visualizar la trayectoria y el objeto
 figure;
@@ -21,13 +23,10 @@ plot(x, y);
 grid on;
 hold on;
     
-% Mostrar referencia
-plot(refx, refy, 'ro', 'MarkerSize', 10, 'MarkerFaceColor', 'r');
-    
 % Mostrar obstáculo
 plot(obsx, obsy, 'bo', 'MarkerSize', 10, 'MarkerFaceColor', 'b');
     
 title('Simulación');
-legend('Trayectoria', 'Referencia', 'Obstáculo');
+legend('Trayectoria', 'Obstáculo');
 xlabel('Posición X');
 ylabel('Posición Y');
