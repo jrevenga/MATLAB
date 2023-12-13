@@ -5,8 +5,8 @@ Ts = 100e-3;
 refx = 5;
 refy = 5;
 
-obsx= 2.5; 
-obsy= 2.5;
+obsx= 2.7; 
+obsy= 2.4;
 
 % Ejecutar simulación
 sim('EvitarObstaculo.slx');
