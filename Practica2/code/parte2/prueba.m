@@ -7,8 +7,8 @@ y_0 = -0.1;
 th_0 = 0;
 
 % Referencia x-y de objeto
-obsx= 1.5; 
-obsy= 1.856;
+obsx= 2.6; 
+obsy= 0.21;
 
 % Ejecutar simulación
 sim('EvitarObstaculo_Trajectory.slx');
