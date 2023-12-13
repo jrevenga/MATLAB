@@ -31,10 +31,10 @@ MF5='POS_G':'trimf',[0.5 3.142 3.142]
 
 [Input3]
 Name='E_d_obs'
-Range=[0 14]
+Range=[0 3.8]
 NumMFs=2
-MF1='PEQUEÑO':'trimf',[0 0 0.14]
-MF2='GRANDE':'trimf',[0.084 0.3153 0.5413]
+MF1='PEQUEÑO':'trimf',[0 0 0.133]
+MF2='GRANDE':'trimf',[0.076 0.2964 0.513]
 
 [Input4]
 Name='E_theta_obs'
