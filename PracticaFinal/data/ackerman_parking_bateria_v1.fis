@@ -12,7 +12,7 @@ AggMethod='max'
 DefuzzMethod='centroid'
 
 [Input1]
-Name='atras_dech'
+Name='sensor9'
 Range=[0 5]
 NumMFs=3
 MF1='pequeña':'trimf',[-2.08 0 2.04365079365079]
@@ -20,7 +20,7 @@ MF2='grande':'trimf',[2.917 5 7.083]
 MF3='media':'trimf',[0.4167 2.5 4.583]
 
 [Input2]
-Name='atras_izq'
+Name='sensor10'
 Range=[0 5]
 NumMFs=3
 MF1='pequeña':'trimf',[-2.083 0 2.083]
@@ -28,7 +28,7 @@ MF2='media':'trimf',[0.4167 2.5 4.583]
 MF3='grande':'trimf',[2.917 5 7.083]
 
 [Input3]
-Name='10atras_lat_izq'
+Name='sensor11'
 Range=[0 5]
 NumMFs=3
 MF1='pequeña':'trimf',[-2.083 0 2.083]
@@ -36,7 +36,7 @@ MF2='media':'trimf',[0.4167 2.5 4.583]
 MF3='grande':'trimf',[2.917 5 7.083]
 
 [Input4]
-Name='11lat_izq_atras'
+Name='sensor12'
 Range=[0 5]
 NumMFs=3
 MF1='pequeña':'trimf',[-2.08 0 1.93783068783069]
@@ -44,12 +44,12 @@ MF2='media':'trimf',[1.21 2.5 3.88227513227513]
 MF3='grande':'trimf',[3.0489417989418 5 7.08]
 
 [Output1]
-Name='steering_wheel'
+Name='direccion'
 Range=[-90 90]
 NumMFs=3
-MF1='negativo':'trapmf',[-171 -99 -81 -30.7142857142857]
-MF2='cero':'trapmf',[-60.2 -9 9 60.2380952380952]
-MF3='positivo':'trapmf',[30.2380952380952 81 99 171]
+MF1='izq':'trapmf',[-171 -99 -81 -30.7142857142857]
+MF2='recto':'trapmf',[-60.2 -9 9 60.2380952380952]
+MF3='der':'trapmf',[30.2380952380952 81 99 171]
 
 [Output2]
 Name='vel'
