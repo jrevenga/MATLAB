@@ -1,0 +1,49 @@
+[System]
+Name='ackerman_parking_bateria_v1'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='atras_dech'
+Range=[0 5]
+NumMFs=3
+MF1='pequeña':'trimf',[-2.083 0 2.083]
+MF2='grande':'trimf',[2.917 5 7.083]
+MF3='media':'trimf',[0.4167 2.5 4.583]
+
+[Input2]
+Name='atras_izq'
+Range=[0 5]
+NumMFs=3
+MF1='pequeña':'trimf',[-2.083 0 2.083]
+MF2='media':'trimf',[0.4167 2.5 4.583]
+MF3='grande':'trimf',[2.917 5 7.083]
+
+[Output1]
+Name='steering_wheel'
+Range=[-90 90]
+NumMFs=3
+MF1='negativo':'trapmf',[-171 -99 -81 -9]
+MF2='cero':'trapmf',[-81 -9 9 81]
+MF3='positivo':'trapmf',[9 81 99 171]
+
+[Output2]
+Name='vel'
+Range=[-30 30]
+NumMFs=3
+MF1='negativa':'trimf',[-55 -30 -5]
+MF2='cero':'trimf',[-25 0 25]
+MF3='positiva':'trimf',[5 30 55]
+
+[Rules]
+1 1, 2 2 (1) : 1
+2 3, 2 1 (1) : 1
+3 2, 2 1 (1) : 1
