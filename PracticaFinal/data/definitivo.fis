@@ -1,0 +1,131 @@
+[System]
+Name='definitivo'
+Type='mamdani'
+Version=2.0
+NumInputs=12
+NumOutputs=2
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='sensor1'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input2]
+Name='sensor2'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input3]
+Name='sensor3'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input4]
+Name='sensor4'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input5]
+Name='sensor5'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input6]
+Name='sensor6'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input7]
+Name='sensor7'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input8]
+Name='sensor8'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input9]
+Name='sensor9'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input10]
+Name='sensor10'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input11]
+Name='sensor11'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Input12]
+Name='sensor12'
+Range=[0 5]
+NumMFs=3
+MF1='CERCA':'trimf',[0 0 1.5]
+MF2='MEDIO':'trimf',[1.25 1.75 2.25]
+MF3='LEJOS':'trimf',[2 5 5]
+
+[Output1]
+Name='giro'
+Range=[-90 90]
+NumMFs=5
+MF1='IZQ_G':'trimf',[-90 -90 -85]
+MF2='IZQ':'trimf',[-85 -45 -9]
+MF3='RECTO':'trimf',[-9 0 9]
+MF4='DER':'trimf',[9 45 86]
+MF5='DER_G':'trimf',[85 90 90]
+
+[Output2]
+Name='V'
+Range=[-15 15]
+NumMFs=3
+MF1='NEG':'trimf',[-15 -15 0]
+MF2='CERO':'trimf',[-4.999 0 5]
+MF3='POS':'trimf',[0 15 15]
+
+[Rules]
+0 0 0 0 0 0 0 0 0 3 0 0, 0 1 (1) : 1
+0 0 0 0 0 0 0 0 0 0 3 3, 5 2 (1) : 2
+0 0 0 0 0 0 0 0 0 1 0 0, 0 3 (1) : 1
