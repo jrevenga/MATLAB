@@ -1,5 +1,5 @@
 [System]
-Name='definitivo'
+Name='original'
 Type='mamdani'
 Version=2.0
 NumInputs=12
@@ -119,15 +119,15 @@ MF5='DER_G':'trimf',[85 90 90]
 
 [Output2]
 Name='V'
-Range=[-16 16]
+Range=[-6 6]
 NumMFs=3
-MF1='NEG':'trimf',[-16 -16 0]
-MF2='CERO':'trimf',[-5.332 0 5.333]
-MF3='POS':'trimf',[0 16 16]
+MF1='NEG':'trimf',[-6 -6 0]
+MF2='CERO':'trimf',[-2 0 2.001]
+MF3='POS':'trimf',[0 6 6]
 
 [Rules]
 0 0 0 0 0 0 0 0 0 3 0 0, 0 1 (1) : 1
 0 0 0 0 0 0 0 0 0 0 3 3, 5 2 (1) : 2
 0 0 0 0 0 0 0 0 1 1 0 0, 0 3 (1) : 2
 0 0 0 1 1 1 0 0 0 0 0 0, 3 0 (1) : 1
-0 0 0 0 0 0 2 0 0 2 0 1, 2 0 (1) : 1
+0 0 0 0 0 0 1 0 0 1 0 1, 3 0 (1) : 1
