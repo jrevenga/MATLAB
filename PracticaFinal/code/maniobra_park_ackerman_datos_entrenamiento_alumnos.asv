@@ -97,22 +97,18 @@ vel_lineal_ackerman_kmh = -15;    % (km/h)
 steering_wheel_angle = -70;       % desde -90 a 90 grados.
 avanzar_ackerman;
 
-distancia = 3.5;
+distancia = 3;
 vel_lineal_ackerman_kmh = -15;    % (km/h)
 steering_wheel_angle = 0;       % desde -90 a 90 grados.
 avanzar_ackerman;
 
-distancia = 2.6;
+distancia = 2.765;
 vel_lineal_ackerman_kmh = -10;    % (km/h)
+
 steering_wheel_angle = 90;       % desde -90 a 90 grados.
 avanzar_ackerman;
 
-distancia = 1;
-vel_lineal_ackerman_kmh = -10;    % (km/h)
-steering_wheel_angle = 30;       % desde -90 a 90 grados.
-avanzar_ackerman;
-
-distancia = 3.5;
+distancia = 4.5;
 vel_lineal_ackerman_kmh = -15;    % (km/h)
 steering_wheel_angle = 0;       % desde -90 a 90 grados.
 avanzar_ackerman;
@@ -124,7 +120,7 @@ avanzar_ackerman;
 respuesta = input('¿Desea guardar la simulación? (Sí: s / No: n): ', 's');
 
 if strcmpi(respuesta, 's')
-    save datos_training training_data;
+    save datos_t training_data;
     disp('Simulación guardada.');
 else
     disp('Simulación no guardada.');
