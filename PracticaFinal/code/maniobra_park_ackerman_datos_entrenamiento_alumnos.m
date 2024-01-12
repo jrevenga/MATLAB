@@ -84,7 +84,7 @@ avanzar_ackerman;
 
 distancia = 1.5;
 vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = 70;       % desde -90 a 90 grados.
+steering_wheel_angle = 10;       % desde -90 a 90 grados.
 avanzar_ackerman;
 
 distancia = 2;
@@ -94,10 +94,10 @@ avanzar_ackerman;
 
 distancia = 1.5;
 vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = -70;       % desde -90 a 90 grados.
+steering_wheel_angle = -10;       % desde -90 a 90 grados.
 avanzar_ackerman;
 
-distancia = 3.5;
+distancia = 3.15;
 vel_lineal_ackerman_kmh = -15;    % (km/h)
 steering_wheel_angle = 0;       % desde -90 a 90 grados.
 avanzar_ackerman;
