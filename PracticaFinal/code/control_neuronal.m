@@ -1,7 +1,10 @@
 % Número de ciclos de entrenamiento
 num_epochs = 4;
+max_performance_threshold = 50;  % Ajusta este umbral según tus necesidades
 
-% Configurar y entrenar la red neuronal con desordenamiento en cada ciclo
+% Inicializar la red neuronal
+net = feedforwardnet([6, 7, 6]);
+
 for epoch = 1:num_epochs
     % Desordenar las filas de los datos de entrenamiento
     num_samples = size(training_data, 1);
@@ -18,20 +21,35 @@ for epoch = 1:num_epochs
     inputs = double(inputs);
     outputs = double(outputs);
 
-    % Configurar y entrenar la red neuronal
-    net = feedforwardnet([6, 7, 6]);
-    net = configure(net, inputs, outputs);
-    net = train(net, inputs, outputs);
+    % Inicializar la red temporal
+    temp_net = feedforwardnet([6, 7, 4]);
 
-    % Evaluar el rendimiento en datos de prueba
-    outputs_pred = net(inputs);
-    performance = perform(net, outputs, outputs_pred);
+    % Iniciar bucle hasta obtener un modelo satisfactorio
+    while true
+        % Configurar y entrenar la red temporal
+        temp_net = configure(temp_net, inputs, outputs);
+        temp_net = train(temp_net, inputs, outputs);
 
-    disp(['Rendimiento en datos de prueba (Epoch ', num2str(epoch), '): ', num2str(performance)]);
+        % Evaluar el rendimiento en datos de prueba
+        outputs_pred = temp_net(inputs);
+        performance = perform(temp_net, outputs, outputs_pred);
+
+        disp(['Rendimiento en datos de prueba (Epoch ', num2str(epoch), '): ', num2str(performance)]);
+
+        % Condición para descartar el entrenamiento si el rendimiento es mayor a 80
+        if performance > max_performance_threshold
+            disp('Entrenamiento descartado debido a alto rendimiento.');
+        else
+            % Si el rendimiento es satisfactorio, salir del bucle
+            net = temp_net;
+            break;
+        end
+    end
 end
 
 Ts = 100e-3;
 gensim(net, Ts);
+
 
 
 
