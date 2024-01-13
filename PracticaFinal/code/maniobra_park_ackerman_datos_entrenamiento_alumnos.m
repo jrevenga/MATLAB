@@ -63,8 +63,15 @@ for sim_number = 1:40
         angulos = [0, 10, 0, -10, 0, 90, 30, 0];
     end
 
-    % Realizar anvances
+    % Realizar avances
     for i = 1:length(distancias)
+        % Verificar si se ha presionado una tecla
+        [~, ~, keyCode] = KbCheck;
+        if keyCode(KbName('Escape'))
+            disp('Simulación interrumpida por el usuario.');
+            break;
+        end
+    
         distancia = distancias(i);
         vel_lineal_ackerman_kmh = velocidades(i);
         steering_wheel_angle = angulos(i);
@@ -83,6 +90,8 @@ for sim_number = 1:40
     
     % Hacer pausa hasta que se pulse Enter
     input('Presiona Enter para continuar con la siguiente simulación...');
+    rosshutdown;
 end
+
 
 
