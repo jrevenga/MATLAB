@@ -76,46 +76,60 @@ while isempty(sonar_0.LatestMessage) || isempty(sonar_1.LatestMessage) || isempt
     waitfor(r);
 end
 
-%AVANCES
-distancia = 0.5;
-vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = 0;       % desde -90 a 90 grados.
-avanzar_ackerman;
+% ...
 
-distancia = 1.5;
-vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = 70;       % desde -90 a 90 grados.
-avanzar_ackerman;
+% Definir los datos para las primeras 10 simulaciones
+distancias_1 =  [0.5, 1.5, 2, 1.5, 3.15, 2.6, 1, 3.5];
+velocidades_1 = [-15, -15, -15, -15, -10, -10, -15, -15, -15, -15];
+angulos_1 =     [0, 10, 0, -10, 0, 90, 30, 0];
 
-distancia = 2;
-vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = 0;       % desde -90 a 90 grados.
-avanzar_ackerman;
+% Definir los datos para las siguientes 10 simulaciones
+angulos_2 = [45, -45, 0, 20, 0, -60, 10, 0, -15, 30];  % Valores de ángulo para las siguientes 10 simulaciones
+distancias_2 = [1, 2, 0.8, 1.2, 2.5, 1.8, 1.5, 3, 2, 2.3];  % Valores de distancia para las siguientes 10 simulaciones
+velocidades_2 = [-12, -15, -13, -14, -11, -14, -12, -15, -14, -13];  % Valores de velocidad para las siguientes 10 simulaciones
 
-distancia = 1.5;
-vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = -70;       % desde -90 a 90 grados.
-avanzar_ackerman;
+% ...
 
-distancia = 3.5;
-vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = 0;       % desde -90 a 90 grados.
-avanzar_ackerman;
+% Realizar las primeras 10 simulaciones
+for i = 1:10
+    distancia = distancias_1(i);
+    vel_lineal_ackerman_kmh = velocidades_1(i);  % (km/h)
+    steering_wheel_angle = angulos_1(i);  % Desde -90 a 90 grados
 
-distancia = 2.6;
-vel_lineal_ackerman_kmh = -10;    % (km/h)
-steering_wheel_angle = 90;       % desde -90 a 90 grados.
-avanzar_ackerman;
+    avanzar_ackerman;
 
-distancia = 1;
-vel_lineal_ackerman_kmh = -10;    % (km/h)
-steering_wheel_angle = 30;       % desde -90 a 90 grados.
-avanzar_ackerman;
+    % Guardar datos de entrenamiento solo si el usuario desea
+    respuesta = input('¿Desea guardar la simulación? (Sí: s / No: n): ', 's');
 
-distancia = 3.5;
-vel_lineal_ackerman_kmh = -15;    % (km/h)
-steering_wheel_angle = 0;       % desde -90 a 90 grados.
-avanzar_ackerman;
+    if strcmpi(respuesta, 's')
+        save(['datos_training_' num2str(i)], 'training_data');
+        disp(['Simulación ' num2str(i) ' guardada.']);
+    else
+        disp(['Simulación ' num2str(i) ' no guardada.']);
+    end
+end
+
+% ...
+
+% Realizar las siguientes 10 simulaciones
+for i = 1:10
+    distancia = distancias_2(i);
+    vel_lineal_ackerman_kmh = velocidades_2(i);  % (km/h)
+    steering_wheel_angle = angulos_2(i);  % Desde -90 a 90 grados
+
+    avanzar_ackerman;
+
+    % Guardar datos de entrenamiento solo si el usuario desea
+    respuesta = input('¿Desea guardar la simulación? (Sí: s / No: n): ', 's');
+
+    if strcmpi(respuesta, 's')
+        save(['datos_training_' num2str(i + 10)], 'training_data');
+        disp(['Simulación ' num2str(i + 10) ' guardada.']);
+    else
+        disp(['Simulación ' num2str(i + 10) ' no guardada.']);
+    end
+end
+
 
 
 % ...

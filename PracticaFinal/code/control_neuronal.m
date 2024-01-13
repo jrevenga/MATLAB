@@ -8,8 +8,15 @@ inputs(isinf(inputs)) = 5.0;
 inputs = double(inputs);
 outputs = double(outputs);
 
+net = feedforwardnet([20, 10]);
+net = configure(net,inputs,outputs);
+net = train(net,inputs,outputs);
+
+Ts=100e-3;
+gensim(net,Ts)
+
 % Ejemplo en MATLAB
-net = feedforwardnet([8, 4]); % 8 nodos en la primera capa oculta, 4 nodos en la segunda y 2 en la tercera
+net = feedforwardnet([20, 10]); % 10 nodos en la primera capa oculta, 5 nodos en la segunda y 2 en la tercera
 net = configure(net,inputs,outputs);
 net = trainlm(net, inputs, outputs); % Entrenar con tus datos
 predictions = net(inputs); % Hacer predicciones
@@ -17,7 +24,3 @@ predictions = net(inputs); % Hacer predicciones
 Ts=100e-3;
 
 gensim(net, Ts);
-
-%%
-training_data = [];
-save datos_entrenamiento training_data
