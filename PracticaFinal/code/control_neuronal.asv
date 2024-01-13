@@ -9,43 +9,19 @@ inputs = double(inputs);
 outputs = double(outputs);
 
 % Ejemplo en MATLAB
-net = feedforwardnet([64, 6]);
+%net = feedforwardnet([64, 24, 6]);
+net = feedforwardnet([32, 64, 12]);
 net = configure(net,inputs,outputs);
 net = train(net, inputs, outputs);
-
-Ts=100e-3;
-gensim(net, Ts);
-
-
-
-% Crea la red neuronal
-net = feedforwardnet([64, 24, 6]);
-
-% Configura la red
-net = configure(net, inputs, outputs);
-
-% Ajusta los hiperparámetros y entrena la red
-net.trainParam.epochs = 200;  % Número de épocas de entrenamiento
-net.trainParam.lr = 0.01;  % Tasa de aprendizaje
-net.trainParam.min_grad = 1e-6;  % Criterio de convergencia
-
-% Entrena la red con todos los datos
 net = train(net, inputs, outputs);
+net = train(net, inputs, outputs);
+
 
 % Evalúa el rendimiento en datos de prueba
 outputs_pred = net(inputs);
 performance = perform(net, outputs, outputs_pred);
 
 disp(['Rendimiento en datos de prueba: ', num2str(performance)]);
-
-% Visualiza algunos resultados
-figure;
-scatter3(outputs(:, 1), outputs(:, 2), outputs_pred(:, 1), 'r', 'filled');
-xlabel('Salida real 1');
-ylabel('Salida real 2');
-zlabel('Salida predicha 1');
-title('Visualización de predicciones en datos de prueba');
-
 
 Ts=100e-3;
 gensim(net, Ts);
