@@ -1,0 +1,55 @@
+% Crear una variable 'inputs' que tome las columnas 1 a 5 (sonar_04, sonar_07, sonar_09, sonar_10, sonar_11)
+inputs = training_data(:, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])';
+
+% Crear una variable 'outputs' que tome las columnas 18 y 19 (ang_volante y vel_angular_ackerman_kmh)
+outputs = training_data(:, [18, 19])';
+
+inputs(isinf(inputs)) = 5.0;
+inputs = double(inputs);
+outputs = double(outputs);
+
+% Ejemplo en MATLAB
+net = feedforwardnet([64, 6]);
+net = configure(net,inputs,outputs);
+net = train(net, inputs, outputs);
+
+Ts=100e-3;
+gensim(net, Ts);
+
+
+
+% Crea la red neuronal
+net = feedforwardnet([64, 24, 6]);
+
+% Configura la red
+net = configure(net, inputs, outputs);
+
+% Ajusta los hiperparámetros y entrena la red
+net.trainParam.epochs = 200;  % Número de épocas de entrenamiento
+net.trainParam.lr = 0.01;  % Tasa de aprendizaje
+net.trainParam.min_grad = 1e-6;  % Criterio de convergencia
+
+% Entrena la red con todos los datos
+net = train(net, inputs, outputs);
+
+% Evalúa el rendimiento en datos de prueba
+outputs_pred = net(inputs);
+performance = perform(net, outputs, outputs_pred);
+
+disp(['Rendimiento en datos de prueba: ', num2str(performance)]);
+
+% Visualiza algunos resultados
+figure;
+scatter3(outputs(:, 1), outputs(:, 2), outputs_pred(:, 1), 'r', 'filled');
+xlabel('Salida real 1');
+ylabel('Salida real 2');
+zlabel('Salida predicha 1');
+title('Visualización de predicciones en datos de prueba');
+
+
+Ts=100e-3;
+gensim(net, Ts);
+
+
+
+
