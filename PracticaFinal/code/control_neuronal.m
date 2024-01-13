@@ -1,30 +1,24 @@
-% Almacena los conjuntos de datos en una celda
-training_data = {training_data_def, training_data_o, training_data1, training_data2, training_data3, training_data4, training_data5, training_data6, training_data7, training_data8, training_data9, training_data10};
+% Crear una variable 'inputs' que tome las columnas 1 a 5 (sonar_04, sonar_07, sonar_09, sonar_10, sonar_11)
+inputs = training_data(:, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])';
 
-% Inicializa las matrices que almacenarán todas las entradas y salidas
-all_data = [];
-
-% Concatena todas las simulaciones en una sola matriz
-for i = 1:length(training_data)
-    % Concatena las matrices de entrada y salida a lo largo de las columnas
-    all_data = [all_data; training_data{i}];
-end
-
-% Selecciona las columnas deseadas para las entradas y salidas
-selected_input_columns = 1:12;
-selected_output_columns = [18, 19];
-
-inputs = all_data(:, selected_input_columns)';
-outputs = all_data(:, selected_output_columns)';
+% Crear una variable 'outputs' que tome las columnas 18 y 19 (ang_volante y vel_angular_ackerman_kmh)
+outputs = training_data(:, [18, 19])';
 
 inputs(isinf(inputs)) = 5.0;
 inputs = double(inputs);
 outputs = double(outputs);
 
-% Crea la red neuronal
-net = feedforwardnet([64, 128, 32]);
-net = configure(net, inputs, outputs);
+% Ejemplo en MATLAB
+net = feedforwardnet([64, 6]);
+net = configure(net,inputs,outputs);
 net = train(net, inputs, outputs);
+
+
+% Evalúa el rendimiento en datos de prueba
+outputs_pred = net(inputs);
+performance = perform(net, outputs, outputs_pred);
+
+disp(['Rendimiento en datos de prueba: ', num2str(performance)]);
 
 Ts=100e-3;
 gensim(net, Ts);
