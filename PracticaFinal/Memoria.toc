@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {part}{I\hspace {1em}Diseño manual de un control borroso de tipo MAMDANI.}{2}{part.1}%
+\contentsline {part}{II\hspace {1em}Diseño automático de un controlador neuronal.}{5}{part.2}%
+\contentsline {section}{\numberline {1}Obtener los datos de entrenamiento}{5}{section.1}%
+\contentsline {section}{\numberline {2}Generar la red con la configuración deseada y preparar los datos de entrenamiento.}{6}{section.2}%
+\contentsline {section}{\numberline {3}Generar el bloque de simulink}{8}{section.3}%
+\contentsline {section}{\numberline {4}Modificar el diagrama de simulink}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Modificar la condición de parada}{8}{subsection.4.1}%

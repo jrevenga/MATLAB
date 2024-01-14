@@ -1,0 +1,60 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{} Número de ciclos de entrenamiento}
+\PYG{n}{num\PYGZus{}epochs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}
+\PYG{n}{max\PYGZus{}performance\PYGZus{}threshold}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{50}\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} Ajusta este umbral según tus necesidades}
+
+\PYG{c}{\PYGZpc{} Inicializar la red neuronal}
+\PYG{n}{net}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{feedforwardnet}\PYG{p}{([}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{]);}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{epoch}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{num\PYGZus{}epochs}
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Desordenar las filas de los datos de entrenamiento}
+\PYG{+w}{    }\PYG{n}{num\PYGZus{}samples}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{size}\PYG{p}{(}\PYG{n}{training\PYGZus{}data}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{permuted\PYGZus{}index}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randperm}\PYG{p}{(}\PYG{n}{num\PYGZus{}samples}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{training\PYGZus{}data\PYGZus{}permuted}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{training\PYGZus{}data}\PYG{p}{(}\PYG{n}{permuted\PYGZus{}index}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{:);}
+
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Crear una variable \PYGZsq{}inputs\PYGZsq{} que tome las columnas 1 a 12}
+\PYG{+w}{    }\PYG{n}{inputs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{training\PYGZus{}data\PYGZus{}permuted}\PYG{p}{(:,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{12}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{    }
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Crear una variable \PYGZsq{}outputs\PYGZsq{} que tome las columnas 18 y 19}
+\PYG{+w}{    }\PYG{n}{outputs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{training\PYGZus{}data\PYGZus{}permuted}\PYG{p}{(:,}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{18}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{19}\PYG{p}{])}\PYG{o}{\PYGZsq{}}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{inputs}\PYG{p}{(}\PYG{n+nb}{isinf}\PYG{p}{(}\PYG{n}{inputs}\PYG{p}{))}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{5.0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{inputs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{double}\PYG{p}{(}\PYG{n}{inputs}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{outputs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{double}\PYG{p}{(}\PYG{n}{outputs}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Inicializar la red temporal}
+\PYG{+w}{    }\PYG{n}{temp\PYGZus{}net}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{feedforwardnet}\PYG{p}{([}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{]);}
+
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Iniciar bucle hasta obtener un modelo satisfactorio}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{n+nb}{true}
+\PYG{+w}{        }\PYG{c}{\PYGZpc{} Configurar y entrenar la red temporal}
+\PYG{+w}{        }\PYG{n}{temp\PYGZus{}net}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{configure}\PYG{p}{(}\PYG{n}{temp\PYGZus{}net}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{inputs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{outputs}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{temp\PYGZus{}net}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{train}\PYG{p}{(}\PYG{n}{temp\PYGZus{}net}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{inputs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{outputs}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c}{\PYGZpc{} Evaluar el rendimiento en datos de prueba}
+\PYG{+w}{        }\PYG{n}{outputs\PYGZus{}pred}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{temp\PYGZus{}net}\PYG{p}{(}\PYG{n}{inputs}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{performance}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{perform}\PYG{p}{(}\PYG{n}{temp\PYGZus{}net}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{outputs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{outputs\PYGZus{}pred}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n+nb}{disp}\PYG{p}{([}\PYG{l+s}{\PYGZsq{}Rendimiento en datos de prueba (Epoch \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{num2str}\PYG{p}{(}\PYG{n}{epoch}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}): \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{num2str}\PYG{p}{(}\PYG{n}{performance}\PYG{p}{)]);}
+
+\PYG{+w}{        }\PYG{c}{\PYGZpc{} Condición para descartar el entrenamiento si el rendimiento es mayor a 80}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{performance}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{max\PYGZus{}performance\PYGZus{}threshold}
+\PYG{+w}{            }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Entrenamiento descartado debido a alto rendimiento.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{else}
+\PYG{+w}{            }\PYG{c}{\PYGZpc{} Si el rendimiento es satisfactorio, salir del bucle}
+\PYG{+w}{            }\PYG{n}{net}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{temp\PYGZus{}net}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{end}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{k}{end}
+
+\PYG{n}{Ts}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{100e\PYGZhy{}3}\PYG{p}{;}
+\PYG{n}{gensim}\PYG{p}{(}\PYG{n}{net}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ts}\PYG{p}{);}
+
+
+
+
+
+
+
+\end{Verbatim}

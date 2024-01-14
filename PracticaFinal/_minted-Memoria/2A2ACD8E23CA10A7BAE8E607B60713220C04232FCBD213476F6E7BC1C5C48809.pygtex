@@ -1,0 +1,123 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} conectar}
+\PYG{c}{\PYGZpc{}***********************}
+
+\PYG{n}{rosshutdown}
+\PYG{l+s}{clear}\PYG{+w}{ }\PYG{l+s}{all}
+\PYG{n+nb}{close}\PYG{+w}{ }\PYG{n+nb}{all}
+
+\PYG{n}{rosinit}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}192.168.110.109\PYGZsq{}}\PYG{p}{)}
+
+
+\PYG{k}{global}\PYG{+w}{ }\PYG{n}{steering\PYGZus{}wheel\PYGZus{}angle}\PYG{p}{;}
+\PYG{k}{global}\PYG{+w}{ }\PYG{n}{vel\PYGZus{}lineal\PYGZus{}ackerman\PYGZus{}kmh}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} ini\PYGZus{}simulador\PYGZus{}ACKERMAN}
+\PYG{c}{\PYGZpc{}***********************}
+
+\PYG{c}{\PYGZpc{}DECLARACIÓN DE SUBSCRIBERS}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}Odometria}
+\PYG{n}{sub\PYGZus{}odom}\PYG{p}{=}\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/odom\PYGZsq{}}\PYG{p}{);}
+\PYG{c}{\PYGZpc{}Laser}
+\PYG{c}{\PYGZpc{}sub\PYGZus{}laser = rossubscriber(\PYGZsq{}/robot0/laser\PYGZus{}1\PYGZsq{}, rostype.sensor\PYGZus{}msgs\PYGZus{}LaserScan);}
+\PYG{c}{\PYGZpc{}Sonars}
+
+\PYG{n}{sonar\PYGZus{}0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}0\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}1\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}2\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}3}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}3\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}4}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}4\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}5}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}5\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}6}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}6\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}7}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}7\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}8}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}8\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}9}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}9\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}10}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}10\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+\PYG{n}{sonar\PYGZus{}11}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rossubscriber}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/sonar\PYGZus{}11\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rostype}\PYG{p}{.}\PYG{n}{sensor\PYGZus{}msgs\PYGZus{}Range}\PYG{p}{);}
+
+
+\PYG{c}{\PYGZpc{}DECLARACIÓN DE PUBLISHERS}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}Velocidad}
+\PYG{n}{pub\PYGZus{}vel}\PYG{p}{=}\PYG{n}{rospublisher}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}/robot0/cmd\PYGZus{}vel\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}geometry\PYGZus{}msgs/Twist\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}GENERACION DE MENSAJES}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{n}{msg\PYGZus{}vel}\PYG{p}{=}\PYG{n}{rosmessage}\PYG{p}{(}\PYG{n}{pub\PYGZus{}vel}\PYG{p}{);}
+
+
+\PYG{c}{\PYGZpc{}Definimos la periodicidad del bucle}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{n}{r}\PYG{p}{=}\PYG{n}{robotics}\PYG{p}{.}\PYG{n}{Rate}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}Nos aseguramos de recibir un mensaje relacionado con el robot}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nb}{strcmp}\PYG{p}{(}\PYG{n}{sub\PYGZus{}odom}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{.}\PYG{n}{ChildFrameId}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}robot0\PYGZsq{}}\PYG{p}{)}\PYG{o}{\PYGZti{}=}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{     }\PYG{n}{sub\PYGZus{}odom}\PYG{p}{.}\PYG{n}{LatestMessage}
+\PYG{k}{end}
+
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Inicialización ACKERMAN finalizada correctamente\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} ***********************}
+
+
+\PYG{n}{training\PYGZus{}data}\PYG{p}{=[];}
+
+\PYG{c}{\PYGZpc{} Recorrido de aparcamiento para obtener datos de entrenamiento.}
+
+\PYG{c}{\PYGZpc{} ...}
+
+\PYG{c}{\PYGZpc{} Verificación de disponibilidad de mensajes de todos los sensores antes de avanzar}
+\PYG{k}{while}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}0}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}1}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}2}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{k}{...}
+\PYG{+w}{      }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}3}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}4}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}5}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{k}{...}
+\PYG{+w}{      }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}6}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}7}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}8}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{k}{...}
+\PYG{+w}{      }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}9}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}10}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n+nb}{isempty}\PYG{p}{(}\PYG{n}{sonar\PYGZus{}11}\PYG{p}{.}\PYG{n}{LatestMessage}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Espera hasta que todos los mensajes de sonar sean recibidos}
+\PYG{+w}{    }\PYG{n+nb}{waitfor}\PYG{p}{(}\PYG{n}{r}\PYG{p}{);}
+\PYG{k}{end}
+
+\PYG{c}{\PYGZpc{} Mapa 1}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 3.2, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 70, 0, \PYGZhy{}70, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 2}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 2.8, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 10, 0, \PYGZhy{}10, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 3}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 3.5, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 60, 0, \PYGZhy{}60, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 4}
+\PYG{c}{\PYGZpc{}distancias = [0.5, 1.5, 2, 1.5, 3.2, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 70, 0, \PYGZhy{}70, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 5}
+\PYG{c}{\PYGZpc{}distancias = [0.5, 1.5, 2, 1.5, 2.8, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 30, 0, \PYGZhy{}30, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 6}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 3.32, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 60, 0, \PYGZhy{}60, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 7}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 2.8, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 30, 0, \PYGZhy{}30, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 8}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 2, 2, 1.5, 3.2, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 70, 0, \PYGZhy{}75, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 9}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 2.8, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 10, 0, \PYGZhy{}10, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa 10}
+\PYG{c}{\PYGZpc{}distancias = [0.5, 1.5, 2, 1.5, 2.925, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 50, 0, \PYGZhy{}50, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa original}
+\PYG{c}{\PYGZpc{} distancias = [0.5, 1.5, 2, 1.5, 3.5, 2.6, 1, 3.5]; velocidades = [\PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}15, \PYGZhy{}10, \PYGZhy{}10, \PYGZhy{}15]; angulos = [0, 60, 0, \PYGZhy{}60, 0, 90, 30, 0];}
+\PYG{c}{\PYGZpc{} Mapa definitivo}
+\PYG{+w}{ }\PYG{n}{distancias}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{1.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{1.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{3.15}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{2.6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{3.5}\PYG{p}{];}\PYG{+w}{ }\PYG{n}{velocidades}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{];}\PYG{+w}{ }\PYG{n}{angulos}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{90}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{];}
+
+\PYG{c}{\PYGZpc{} Realizar avances}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{distancias}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{distancia}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{distancias}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{vel\PYGZus{}lineal\PYGZus{}ackerman\PYGZus{}kmh}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{velocidades}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{steering\PYGZus{}wheel\PYGZus{}angle}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{angulos}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{avanzar\PYGZus{}ackerman}\PYG{p}{;}
+\PYG{k}{end}
+
+\PYG{c}{\PYGZpc{} Guardar datos de entrenamiento solo si el usuario desea}
+\PYG{n}{respuesta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}¿Desea guardar la simulación? (Sí: s / No: n): \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}s\PYGZsq{}}\PYG{p}{);}
+
+\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{strcmpi}\PYG{p}{(}\PYG{n}{respuesta}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}s\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nb}{save}\PYG{+w}{ }\PYG{n}{datos\PYGZus{}training\PYGZus{}definitivo}\PYG{+w}{ }\PYG{n}{training\PYGZus{}data}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Simulación guardada.\PYGZsq{}}\PYG{p}{);}
+\PYG{k}{else}
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Simulación no guardada.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{c}{\PYGZpc{} Puedes agregar aquí el código para realizar acciones adicionales si la simulación no se guarda}
+\PYG{k}{end}
+\end{Verbatim}

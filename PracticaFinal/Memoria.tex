@@ -65,33 +65,22 @@
 
     \part{Diseño manual de un control borroso de tipo MAMDANI.}
     
-    \section{a)}
-	
-	\begin{figure}[htp!]
-		\centering
-		\includegraphics[width=0.25\textwidth]{figures/red.png}
-	\end{figure}
-	
-	
-	\subsection{Código}
-	\inputminted[fontsize=\scriptsize, linenos, breaklines=true, xleftmargin=0.75cm, frame=lines]{matlab}{code/red,png}
+    En el diseño del controlador borroso para la maniobra de estacionamiento, se empleó la herramienta Fuzzy de MATLAB, utilizando un sistema de inferencia Mamdani. El objetivo principal fue regular la velocidad lineal y el giro del volante del vehículo, basándose en las lecturas de sus 12 sensores de ultrasonidos.\\
     
-        \subsection{i}
-        
-        \subsection{ii}
-        
-        \subsection{iii}
-        
-        \subsection{iv}
-        
-        \subsection{v}
-        
-    \section{b)}
+    Para cada sensor, se definieron tres funciones de membresía (CERCA, MEDIO, LEJOS) con rangos de entrada de [0, 5]. Estas funciones capturan la información borrosa proveniente de los sensores y facilitan la toma de decisiones en el sistema borroso. La selección de tres funciones de membresía por sensor permite modelar diferentes grados de proximidad de manera más precisa.\\
     
-    \section{c)}
+    En cuanto a las salidas del controlador, se definieron dos variables: giro y velocidad. Para la variable de giro, se establecieron cinco funciones de membresía (IZQ\_G, IZQ, RECTO, DER, DER\_G) con un rango de salida de [-90, 90]. Mientras tanto, la variable de velocidad tiene tres funciones de membresía (NEG, CERO, POS) con un rango de salida de [-6, 6].\\
     
-    \section{d)}
-
+    Se implementaron cinco reglas borrosas en el sistema de inferencia, las cuales relacionan las condiciones borrosas de los sensores con las acciones de control. Cada regla especifica el comportamiento del vehículo en función de la distancia detectada por los sensores. Por ejemplo, si los sensores 10, 11 y 12 indican que el obstáculo está LEJOS, la regla 1 establece que el vehículo debe girar a la IZQUIERDA\_GRANDE y retroceder con una velocidad NEGATIVA.\\
+    
+    \includegraphics[width=0.5\textwidth]{figures/1.png}\\
+    \includegraphics[width=1\textwidth]{figures/2.png}
+    \includegraphics[width=1\textwidth]{figures/3.png}\\
+    
+    
+    En resumen, el diseño del controlador borroso se basa en la definición cuidadosa de funciones de membresía, reglas y métodos de inferencia. A través de la lógica difusa, el controlador interpreta eficazmente las lecturas borrosas de los sensores y genera comandos precisos de velocidad y giro para el vehículo, optimizando su desempeño en la maniobra de estacionamiento. El ajuste y refinamiento de estos componentes son cruciales para adaptar el controlador a diferentes situaciones y mejorar su rendimiento en la tarea específica planteada.
+    
+	\newpage
                 
     \part{Diseño automático de un controlador neuronal.}
 	
@@ -147,7 +136,7 @@
 
         \begin{figure}[htp!]
 		\centering
-		\includegraphics[width=1\textwidth]{PracticaFinal/figures/diagrama_simulink_neuronal.png}
+		\includegraphics[width=1\textwidth]{figures/diagrama_simulink_neuronal.png}
 	\end{figure}
 
         \subsection{Modificar la condición de parada}
